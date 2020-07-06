@@ -11,10 +11,15 @@ document.addEventListener('DOMContentLoaded', e => {
 	});
 
 	// solve the equation given in the input text
-	// will replace eval with regex
 	const calculate = () => {
+		// use regex to clean input
+		// remove whitespace
+		// input must match an arithmethic equation without parenthesis
+		const regexMatch = /^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$/.exec(input.value.replaceAll(' ', '')); // regex match array
+		const cleanInput = regexMatch? regexMatch[0] : NaN; // default to NaN
+		
 		try {
-			output.innerText = eval(input.value.replaceAll(' ', '')) || NaN; // remove whitespace
+			output.innerText = eval(cleanInput); // solve
 		} catch (e) {
 			output.innerText = NaN;
 		}
