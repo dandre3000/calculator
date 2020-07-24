@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', e => {
-	const input = document.querySelector('#calc-text');
-	const output = document.querySelector('#calc-output');
+	const input = document.getElementById('calc-text');
+	const output = document.getElementById('calc-output');
 	
 	// each calculator button appends the input text with its numeral/symbol
-	[...document.getElementsByClassName('calc-btn')].forEach(num => {
-		num.onclick = e => {
-			input.value += num.innerText;
+	[...document.getElementsByClassName('calc-btn')].forEach(btn => {
+		btn.onclick = e => {
+			input.value += btn.innerText;
 			calculate();
 		};
 	});
