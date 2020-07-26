@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', e => {
 	
 	document.getElementById('backspace').onclick = e => {
 		input.value = input.value.substring(0, input.value.length - 1);
+		calculate();
+	};
 	};
 
 	// solve the equation given in the input text
