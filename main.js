@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', e => {
 	const input = document.getElementById('calc-text');
 	const output = document.getElementById('calc-output');
+	const equal = document.getElementById('equal');
+	const history = document.getElementById('history');
 	
 	// each calculator button appends the input text with its numeral/symbol
 	[...document.getElementsByClassName('calc-btn')].forEach(btn => {
@@ -14,6 +16,15 @@ document.addEventListener('DOMContentLoaded', e => {
 		input.value = input.value.substring(0, input.value.length - 1);
 		calculate();
 	};
+	
+	document.getElementById('equal').onclick = e => {
+		const el = document.createElement('li');
+		
+		if (output.innerText != 'NaN') {
+			el.innerText = input.value + '=' + output.innerText;
+			history.appendChild(el);
+			output.innerText = input.value = '';
+		}
 	};
 
 	// solve the equation given in the input text
