@@ -17,13 +17,24 @@ document.addEventListener('DOMContentLoaded', e => {
 		calculate();
 	};
 	
-	document.getElementById('equal').onclick = e => {
-		const el = document.createElement('li');
+	const appendHistory = () => {
+		const el = document.createElement('button');
+		el.className = 'list-group-item list-group-item-action';
+		el.innerText = input.value + '=' + output.innerText;
 		
+		el.onclick = e => {
+			const calc = el.innerText.split('=');
+			input.value = calc[0];
+			output.innerText = calc[1];
+		};
+		
+		history.appendChild(el);
+		output.innerText = input.value = '';
+	};
+	
+	document.getElementById('equal').onclick = e => {
 		if (output.innerText != 'NaN') {
-			el.innerText = input.value + '=' + output.innerText;
-			history.appendChild(el);
-			output.innerText = input.value = '';
+			appendHistory();
 		}
 	};
 
