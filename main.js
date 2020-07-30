@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', e => {
 		calculate();
 	};
 	
+	document.getElementById('clear-history').onclick = e => {
+		history.replaceChildren();
+	};
+	
 	const appendHistory = () => {
 		const el = document.createElement('button');
 		el.className = 'list-group-item list-group-item-action';
