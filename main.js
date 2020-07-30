@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', e => {
 		calculate();
 	};
 	
+	document.getElementById('clear').onclick = e => {
+		input.value = '';
+		output.innerText = NaN;
+	};
+	
 	document.getElementById('clear-history').onclick = e => {
 		history.replaceChildren();
 	};
