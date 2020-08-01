@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', e => {
 		
 		// solve
 		try {
-			output.innerText = eval(str);
+			const result = eval(str);
+			output.innerText = result != undefined? result : 0;
 		} catch (e) {
 			output.innerText = NaN; // not an arithmetic equation
 		}
