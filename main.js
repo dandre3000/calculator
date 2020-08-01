@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', e => {
 		}
 	};
 	
-	// const regexMatch = /^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$/.exec(input.value.replaceAll(' ', '')); // regex match array
-	
 	// solve the equation given in the input text and prevent code injection while using eval
 	const calculate = () => {
 		const str = input.value.replaceAll(' ', ''); // remove whitespace
