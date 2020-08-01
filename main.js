@@ -46,19 +46,28 @@ document.addEventListener('DOMContentLoaded', e => {
 			appendHistory();
 		}
 	};
-
-	// solve the equation given in the input text
+	
+	// const regexMatch = /^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$/.exec(input.value.replaceAll(' ', '')); // regex match array
+	
+	// solve the equation given in the input text and prevent code injection while using eval
 	const calculate = () => {
-		// use regex to clean input
-		// remove whitespace
-		// input must match an arithmethic equation without parenthesis
-		const regexMatch = /^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$/.exec(input.value.replaceAll(' ', '')); // regex match array
-		const cleanInput = regexMatch? regexMatch[0] : NaN; // default to NaN
+		const str = input.value.replaceAll(' ', ''); // remove whitespace
 		
+		// validate characters
+		for (let i = 0; i < str.length; i++) {
+			const arithmetic = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '-', '+', '/', '*', '(', ')'];
+			const ch = str[i];
+			
+			if (!arithmetic.includes(ch)) {
+				throw new SyntaxError('invalid character');
+			}
+		}
+		
+		// solve
 		try {
-			output.innerText = eval(cleanInput); // solve
+			output.innerText = eval(str);
 		} catch (e) {
-			output.innerText = NaN;
+			output.innerText = NaN; // not an arithmetic equation
 		}
 	};
 	
