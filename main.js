@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', e => {
-	const input = document.getElementById('calc-text');
+	const input = document.getElementById('calc-input');
 	const output = document.getElementById('calc-output');
 	const equal = document.getElementById('calc-equal');
 	const history = document.getElementById('calc-history');
