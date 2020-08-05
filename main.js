@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', e => {
 	const input = document.getElementById('calc-text');
 	const output = document.getElementById('calc-output');
-	const equal = document.getElementById('equal');
-	const history = document.getElementById('history');
+	const equal = document.getElementById('calc-equal');
+	const history = document.getElementById('calc-history');
 	
 	// each calculator button appends the input text with its numeral/symbol
 	[...document.getElementsByClassName('calc-btn')].forEach(btn => {
@@ -12,17 +12,17 @@ document.addEventListener('DOMContentLoaded', e => {
 		};
 	});
 	
-	document.getElementById('backspace').onclick = e => {
+	document.getElementById('calc-backspace').onclick = e => {
 		input.value = input.value.substring(0, input.value.length - 1);
 		calculate();
 	};
 	
-	document.getElementById('clear').onclick = e => {
+	document.getElementById('calc-clear').onclick = e => {
 		input.value = '';
 		output.innerText = NaN;
 	};
 	
-	document.getElementById('clear-history').onclick = e => {
+	document.getElementById('calc-clear-history').onclick = e => {
 		history.replaceChildren();
 	};
 	
@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', e => {
 			appendHistory();
 		}
 	};
+	
+	// const regexMatch = /^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$/.exec(input.value.replaceAll(' ', '')); // regex match array
 	
 	// solve the equation given in the input text and prevent code injection while using eval
 	const calculate = () => {
