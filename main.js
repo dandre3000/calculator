@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', e => {
 	const input = document.getElementById('calc-input');
 	const output = document.getElementById('calc-output');
-	const equal = document.getElementById('calc-equal');
 	const history = document.getElementById('calc-history');
 	
 	// each calculator button appends the input text with its numeral/symbol
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', e => {
 		output.innerText = input.value = '';
 	};
 	
-	document.getElementById('equal').onclick = e => {
+	document.getElementById('calc-equal').onclick = e => {
 		if (output.innerText != 'NaN') {
 			appendHistory();
 		}
